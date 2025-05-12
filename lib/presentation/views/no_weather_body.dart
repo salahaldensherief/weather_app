@@ -53,6 +53,8 @@ class NoWeatherView extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),),
                       backgroundColor: Colors.blueGrey,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,

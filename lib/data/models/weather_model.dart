@@ -1,14 +1,17 @@
 class WeatherModel {
   final String cityName;
-  final String date;
+  final DateTime date;
   final double temp;
   final double maxTemp;
   final double minTemp;
   final String weatherCondition;
   final String sunrise;
   final String sunset;
+  final int conditionCode;
+
 
   WeatherModel({
+    required this.conditionCode,
     required this.sunrise,
     required this.sunset,
     required this.cityName,
@@ -20,8 +23,9 @@ class WeatherModel {
   });
   factory WeatherModel.fromjson(json) {
     return WeatherModel(
+      conditionCode: json['forecast']['forecastday'][0]['day']['condition']['code'],
       cityName: json['location']['name'],
-      date: json['current']['last_updated'],
+      date: DateTime.parse(json['current']['last_updated']),
       temp: json['forecast']['forecastday'][0]['day']['avgtemp_c'],
       maxTemp: json['forecast']['forecastday'][0]['day']['maxtemp_c'],
       minTemp: json['forecast']['forecastday'][0]['day']['mintemp_c'],

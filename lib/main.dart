@@ -19,16 +19,16 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: false,
         ),
         home: BlocBuilder<GetWeatherCubit, WeatherState>(
           builder: (context, state) {
             if (state is NoWeatherState) {
-              return NoWeatherView();
+              return const NoWeatherView();
             } else if (state is WeatherLoadedState) {
               return HomeView();
             } else {
-              return Text('opps there was an error');
+              return const Text('opps there was an error');
             }
           },
         ),
