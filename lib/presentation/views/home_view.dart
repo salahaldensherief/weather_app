@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/presentation/cubits/get_weather_cubit.dart';
 import 'package:weather_app/presentation/views/widgets/custom_app_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -6,6 +8,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -29,24 +32,24 @@ class HomeView extends StatelessWidget {
                   children: [
                     Image.asset('assets/images/1.png', height: 400),
                     const SizedBox(height: 16),
-                    const Text(
-                      '21°C',
+                     Text(
+                      weatherModel.temp.toString(),
                       style: TextStyle(
                         fontSize: 48,
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Text(
-                      'THUNDERSTORM',
+                     Text(
+                     weatherModel.weatherCondition,
                       style: TextStyle(
                         fontSize: 24,
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const Text(
-                      'Friday 16 • 09:41am',
+                     Text(
+                      weatherModel.date,
                       style: TextStyle(fontSize: 16, color: Colors.white70),
                     ),
                   ],
@@ -62,8 +65,8 @@ class HomeView extends StatelessWidget {
                       Column(
                         children: [
                           Image.asset('assets/images/11.png', height: 40),
-                          const Text(
-                            'Sunrise\n5:34 am',
+                           Text(
+                            'Sunrise\n${weatherModel.sunrise}',
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white70),
                           ),
@@ -72,8 +75,8 @@ class HomeView extends StatelessWidget {
                       Column(
                         children: [
                           Image.asset('assets/images/12.png', height: 40),
-                          const Text(
-                            'Sunset\n6:34 pm',
+                           Text(
+                            'Sunset\n${weatherModel.sunset}',
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white70),
                           ),
@@ -93,8 +96,8 @@ class HomeView extends StatelessWidget {
                       Column(
                         children: [
                           Image.asset('assets/images/13.png', height: 30),
-                          const Text(
-                            'Temp Max\n12°C',
+                           Text(
+                            'Temp Max\n${weatherModel.maxTemp}',
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white70),
                           ),
@@ -103,8 +106,8 @@ class HomeView extends StatelessWidget {
                       Column(
                         children: [
                           Image.asset('assets/images/14.png', height: 30),
-                          const Text(
-                            'Temp Min\n8°C',
+                           Text(
+                            'Temp Min\n${weatherModel.minTemp}',
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.white70),
                           ),
