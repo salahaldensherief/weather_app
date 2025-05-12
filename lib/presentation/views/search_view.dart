@@ -11,7 +11,10 @@ class SearchView extends StatelessWidget {
         title: Text('Search a City'),
 
       ),
-      body: CustomTextField(),
+      body: CustomTextField(onSubmitted: (value){
+
+
+      },),
     );
   }
 }
