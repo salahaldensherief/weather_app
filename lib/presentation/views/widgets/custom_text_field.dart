@@ -5,6 +5,25 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField();
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Center(
+        child: TextField(
+
+          decoration: InputDecoration(
+            labelText: 'Search',
+            suffixIcon: Icon(Icons.search_rounded),
+            hintText: 'Enter city name',
+            border: OutlineInputBorder(
+               borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide(
+                color: Colors.black,
+                
+              )
+            )
+          ),
+        ),
+      ),
+    );
   }
 }
